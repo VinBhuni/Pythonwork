@@ -1,0 +1,15 @@
+# Demonstrates CLA requests; python
+
+import sys, requests, json 
+
+if len(sys.argv) != 2:
+    sys.exit()
+
+response = requests.get("https://itunes.apple.com/search?entity=song&limit=2&term=" + sys.argv[1])
+
+o = response.json()
+
+for song in o["results"]:
+    print(song["trackName"])
+    print("--------------------------------")
+    print(type(song))
